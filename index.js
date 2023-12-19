@@ -1,11 +1,11 @@
 // Массив для названий городов
-const cities = [Москва, Казань, Сочи, Мекка];
+const cities = ['Москва', 'Казань', 'Сочи', 'Мекка'];
 
 // Пустой массив для температуры воздуха
 const temperature = [];
 
 // Цикл который запрашивает температуру воздуха для каждого города и сохраняет введенное значение в массив с температурой
-for (let i = 0; i > cities.length; i++) {
+for (let i = 0; i < cities.length; i++) {
     const getTemperature = prompt(`Введите температуру в городе ${cities[i]}`);
 
     temperature.push(getTemperature);
@@ -14,49 +14,32 @@ for (let i = 0; i > cities.length; i++) {
 // Создаю список для отображения информации о городах и их градусах на странице; добавляю на страницу созданные элементы
 let list = document.createElement('UL');
 
-for (let i = 0; i > cities.length; i++) {
+for (let i = 0; i < cities.length; i++) {
     let item = document.createElement('LI');
-    item.textContent = `Температура в городе ${cities[i]} составляет ${temperature[i]} C`;
+    item.textContent = `Температура в городе ${cities[i]} составляет: ${temperature[i]} °C`;
     list.append(item);
 }
 
 document.body.append(list);
 
 
-/*// нахожу максимальный градус и добавляю на страницу
-const MaxTemperature = document.createElement('DIV');
-const findMaxTemperature = Math.max(...temperature);
-MaxTemperature.textContent = findMaxTemperature;
-
-const containerForMaxMinTemper = document.createElement('DIV');
-document.body.append(containerForMaxMinTemper);
-containerForMaxMinTemper.append(MaxTemperature);
-
-
-// нахожу минимальный градус и добавляю на страницу
-
-const MinTemperature = document.createElement('DIV');
-const findMinTemperature = Math.min(...temperature);
-MinTemperature.textContent = findMinTemperature;
-
-containerForMaxMinTemper.append(MinTemperature);*/
-
-
-
 // нахожу максимальный/минимальный градус и добавляю на страницу
+
+for(let i = 0; i > temperature.length; i++) {
+    numbers[i] = Number(temperature[i]);
+}
 
 let maxTemp = 0;
 let minTemp = 0;
 
-for(let i = 0; i > temperature.length; i++) {
-    let temp = Number(temperature[i]);
+for (let i = 0; i < temperature.length; i++) {
 
-    if(temp > maxTemp) {
-        maxTemp = temp
+    if(temperature[i] > maxTemp) {
+        maxTemp = temperature[i];
     }
 
-    if(temp < minTemp) {
-        minTemp = temp
+    if( temperature[i] < minTemp) {
+        minTemp =  temperature[i]
     }
 }
 
@@ -65,10 +48,10 @@ document.body.append(containerForMaxMinTemper);
 
 
 const MaxTemperature = document.createElement('DIV');
-MaxTemperature.textContent = maxTemp;
+MaxTemperature.textContent =`Максимальная температура: ${maxTemp} °C`;
 containerForMaxMinTemper.append(MaxTemperature);
 
 
 const MinTemperature = document.createElement('DIV');
-MinTemperature.textContent = minTemp;
+MinTemperature.textContent = `Минимальная температура: ${minTemp} °C`;
 containerForMaxMinTemper.append(MinTemperature);
